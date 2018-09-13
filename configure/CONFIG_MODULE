@@ -1,12 +1,12 @@
 #
 EPICS_MODULE_NAME:=ADAndor
-EPICS_MODULE_TAG:=tags/R2-7
+EPICS_MODULE_TAG:=tags/R2-8
 #
-E3_MODULE_VERSION:=2.7.0
+E3_MODULE_VERSION:=2.8.0
 
 # DEPENDENT MODULE VERSION
 ASYN_DEP_VERSION:=4.33.0
-ADCORE_DEP_VERSION:=3.2.0
+ADCORE_DEP_VERSION:=3.3.2
 
 # ONLY IF this module has the sequencer dependency. However,
 # in most case, we don't need to enable the following line,
