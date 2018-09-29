@@ -17,8 +17,8 @@
 #
 # Author  : Jeong Han Lee
 # email   : jeonghan.lee@gmail.com
-# Date    : Thursday, May 17 17:36:32 CEST 2018
-# version : 0.0.1
+# Date    : September 29 14:09:00 CEST 2018
+# version : 0.0.2
 
 
 where_am_I := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
@@ -73,9 +73,13 @@ ifeq ($(T_A),linux-x86_64)
 USR_LDFLAGS += -Wl,--enable-new-dtags
 USR_LDFLAGS += -Wl,-rpath=$(E3_MODULES_VENDOR_LIBS_LOCATION)
 USR_LDFLAGS += -L$(E3_MODULES_VENDOR_LIBS_LOCATION)
-USR_LDFLAGS += -landor
-USR_LDFLAGS += -lshamrockcif
-
+# With Ubuntu, the linker needs the option -Wl,--start-group
+# in order to find all undefined symblos.
+# So without this option, put the vendor libs in LIB_SYS_LIBS.
+# Thus, they will be called in proper oders to be linked.
+# 
+LIB_SYS_LIBS += andor
+LIB_SYS_LIBS += shamrockcif
 endif
 
 
@@ -95,8 +99,6 @@ TEMPLATES += $(wildcard $(APPDB)/*.db)
 
 # TEMPLATES += $(APPDB)/andorCCD.template
 # TEMPLATES += $(APPDB)/shamrock.template
-
-
 
 
 ## This RULE should be used in case of inflating DB files 
