@@ -18,8 +18,8 @@
 #
 # Author  : Jeong Han Lee
 # email   : jeonghan.lee@gmail.com
-# Date    : Thursday, March 28 22:34:55 CET 2019
-# version : 0.0.3
+# Date    : Monday, September  9 15:14:46 CEST 2019
+# version : 0.0.4
 
 
 where_am_I := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
@@ -120,7 +120,7 @@ USR_DBFLAGS += -I $(APPDB)
 
 # 
 #
-USR_DBFLAGS += -I $(E3_SITELIBS_PATH)/ADCore_$(ADCORE_DEP_VERSION)_db
+USR_DBFLAGS += -I $(E3_SITEMODS_PATH)/ADCore/$(ADCORE_DEP_VERSION)/db
 
 SUBS=$(wildcard $(APPDB)/*.substitutions)
 TMPS=$(wildcard $(APPDB)/*.template)
