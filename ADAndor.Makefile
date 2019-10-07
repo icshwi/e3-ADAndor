@@ -18,8 +18,8 @@
 #
 # Author  : Jeong Han Lee
 # email   : jeonghan.lee@gmail.com
-# Date    : Monday, September  9 15:14:46 CEST 2019
-# version : 0.0.4
+# Date    : Monday, October  7 12:48:24 CEST 2019
+# version : 0.0.5
 
 
 where_am_I := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
@@ -80,8 +80,8 @@ SOURCES += $(APPSRC)/shamrockDummy.cpp
 
 ifeq ($(T_A),linux-x86_64)
 USR_LDFLAGS += -Wl,--enable-new-dtags
-USR_LDFLAGS += -Wl,-rpath=$(E3_MODULES_VENDOR_LIBS_LOCATION)
 USR_LDFLAGS += -L$(E3_MODULES_VENDOR_LIBS_LOCATION)
+USR_LDFLAGS += -Wl,-rpath,"\$$ORIGIN/../../../../../siteLibs/vendor/$(E3_MODULE_NAME)/$(E3_MODULE_VERSION)"
 # With Ubuntu, the linker needs the option -Wl,--start-group
 # in order to find all undefined symblos.
 # So without this option, put the vendor libs in LIB_SYS_LIBS.
